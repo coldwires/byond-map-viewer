@@ -176,6 +176,7 @@ fetch('games.json')
     const ul = $('gallery');
     ul.textContent = '';
     ul.hidden = !list.length;
+    if (!busy && !overlay.hidden) show(list.length ? 'Pick a world, or open your own.' : 'Open a .dmb and its .rsc to see its map.');
     for (const g of list) {
       const li = document.createElement('li');
       const b = document.createElement('button');
@@ -189,6 +190,7 @@ fetch('games.json')
   })
   .catch((e) => {
     $('gallery').hidden = true;
+    if (!busy && !overlay.hidden) show('Open a .dmb and its .rsc to see its map.');
     log(String(e));
   });
 
