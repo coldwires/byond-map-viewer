@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BYOND map viewer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside>
+  <h1>BYOND map viewer</h1>
+  <p class="lead">Maps from compiled worlds, drawn in the browser.</p>
+
+  <h2>Open</h2>
+  <ul id="gallery"></ul>
+  <label class="file">
+    <input id="files" type="file" accept=".dmb,.rsc" multiple>
+    <span>Open a .dmb and .rsc</span>
+  </label>
+
+  <h2>Controls</h2>
+  <dl class="keys">
+    <dt>Click</dt><dd>Inspect</dd>
+    <dt>Drag</dt><dd>Move</dd>
+    <dt>Wheel</dt><dd>Zoom</dd>
+    <dt>[ ]</dt><dd>Level</dd>
+    <dt>0</dt><dd>Reset zoom</dd>
+    <dt>Esc</dt><dd>Deselect</dd>
+  </dl>
+
+  <details id="logbox">
+    <summary>Log</summary>
+    <pre id="log"></pre>
+  </details>
+</aside>
+<main>
+  <div id="stage">
+    <canvas id="canvas" tabindex="0" oncontextmenu="event.preventDefault()"></canvas>
+    <div id="overlay">Pick a world.</div>
+    <section id="inspector" hidden>
+      <header>
+        <div>
+          <div id="insp-kind" class="kind"></div>
+          <div id="insp-name" class="name"></div>
+        </div>
+        <button id="insp-close" title="Deselect (Esc)">&times;</button>
+      </header>
+      <table id="insp-vars"></table>
+    </section>
+  </div>
+  <div id="status"></div>
+</main>
+<script src="app.js"></script>
+<script src="dream.js" async></script>
+</body>
+</html>
