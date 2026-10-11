@@ -33,12 +33,13 @@ var Module = {
   },
 };
 
-// SDL writes the view's state to document.title. Show it under the map
-// instead, and keep the tab's title plain.
+// SDL writes the world's name and the view's state to document.title, as
+// "<world> - BYOND map viewer[ studio] - z 1 of 2, centre (8,8), ...". Show
+// them under the map instead, and keep the tab's title plain.
 new MutationObserver(() => {
-  const m = document.title.match(/^BYOND map viewer(?: \[dev\])? - (.*)$/);
+  const m = document.title.match(/^(.*) - BYOND map viewer(?: studio)? - (.*)$/);
   if (!m) return;
-  $('status').textContent = m[1].replace(/, /g, '   ');
+  $('status').textContent = [m[1], ...m[2].split(', ')].join('   ');
   document.title = 'BYOND map viewer';
 }).observe(document.querySelector('title'), { childList: true });
 

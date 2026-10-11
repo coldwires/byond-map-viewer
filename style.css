@@ -164,6 +164,9 @@ main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
   font-size: 12px;
   color: var(--muted);
   min-height: 29px;
+  white-space: pre;   /* the parts are spaced apart */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 700px) {
